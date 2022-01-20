@@ -76,12 +76,8 @@ class ItemAction(Action):
         """Invoke the items ability, this action will be given to provide context."""
         self.item.consumable.activate(self)
 
-class EscapeAction(Action):
-    def perform (self) -> None:
-        raise SystemExit()  
-
 class DropItem(ItemAction):
-    def perfrom(self) -> None:
+    def perform(self) -> None:
         self.entity.inventory.drop(self.item)
 
 

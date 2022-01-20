@@ -6,7 +6,6 @@ import actions
 from actions import (
     Action,
     BumpAction,
-    EscapeAction,
     PickupAction,
     WaitAction
 )
@@ -207,7 +206,6 @@ class InventoryDropHandler(InventoryEventHandler):
 
     def on_item_selected(self, item: Item) -> Optional[Action]:
         """Drop this item."""
-        self.engine.message_log.add_message(f"atempting to drop {item.name}")
         return actions.DropItem(self.engine.player, item)
 
 
@@ -228,7 +226,7 @@ class MainGameEventHandler(EventHandler):
             action =WaitAction(player)
 
         elif key == tcod.event.K_ESCAPE:
-            action = EscapeAction(player)
+            raise SystemExit()
     
         elif key == tcod.event.K_v:
             self.engine.event_handler = HistoryViewer(self.engine)
